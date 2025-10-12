@@ -1,0 +1,21 @@
+{
+  "Home": {
+    "title": "KatoSuite",
+    "pricing": "Pricing",
+    "library": "Library"
+  },
+  "Pricing": {
+    "title": "Choose Your Plan",
+    "perMonth": "per month",
+    "features": "Features",
+    "selectPlan": "Select Plan"
+  },
+  "Library": {
+    "title": "Your Library",
+    "noLessons": "No lessons saved yet",
+    "validLessonsOnly": "Only valid lessons are automatically saved"
+  },
+  "Export": {
+    "footer": "Exported from KatoSuite"
+  }
+}

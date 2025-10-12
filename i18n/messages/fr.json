@@ -1,0 +1,21 @@
+{
+  "Home": {
+    "title": "KatoSuite",
+    "pricing": "Tarification",
+    "library": "Bibliothèque"
+  },
+  "Pricing": {
+    "title": "Choisissez Votre Plan",
+    "perMonth": "par mois",
+    "features": "Fonctionnalités",
+    "selectPlan": "Sélectionner le Plan"
+  },
+  "Library": {
+    "title": "Votre Bibliothèque",
+    "noLessons": "Aucune leçon enregistrée",
+    "validLessonsOnly": "Seules les leçons valides sont automatiquement enregistrées"
+  },
+  "Export": {
+    "footer": "Exporté depuis KatoSuite"
+  }
+}
