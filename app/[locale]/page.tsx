@@ -14,6 +14,9 @@ export default function HomePage() {
         <Link href="/en/library" className="text-blue-600 hover:underline">
           {t("library")}
         </Link>
+        <Link href="/en/lessons" className="text-blue-600 hover:underline">
+          Lessons
+        </Link>
       </nav>
     </main>
   );
