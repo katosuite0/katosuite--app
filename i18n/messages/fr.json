@@ -2,7 +2,8 @@
   "Home": {
     "title": "KatoSuite",
     "pricing": "Tarification",
-    "library": "Bibliothèque"
+    "library": "Bibliothèque",
+    "lessons": "Leçons"
   },
   "Pricing": {
     "title": "Choisissez Votre Plan",
@@ -15,7 +16,16 @@
     "noLessons": "Aucune leçon enregistrée",
     "validLessonsOnly": "Seules les leçons valides sont automatiquement enregistrées"
   },
+  "Lessons": {
+    "title": "Éditeur de Leçons",
+    "contentEditor": "Éditeur de Contenu",
+    "planSelection": "Sélection du Plan",
+    "exportPreview": "Aperçu de l'Export"
+  },
   "Export": {
-    "footer": "Exporté depuis KatoSuite"
+    "footer": "Exporté depuis KatoSuite",
+    "upgradeTitle": "Mettre à Niveau pour Supprimer le Filigrane",
+    "upgradeDescription": "Obtenez Starter+ ou Pro pour exporter sans superposition",
+    "viewPlans": "Voir les Plans"
   }
 }

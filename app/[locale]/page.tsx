@@ -15,7 +15,7 @@ export default function HomePage() {
           {t("library")}
         </Link>
         <Link href="/en/lessons" className="text-blue-600 hover:underline">
-          Lessons
+          {t("lessons")}
         </Link>
       </nav>
     </main>
