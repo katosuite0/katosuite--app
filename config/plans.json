@@ -1,0 +1,52 @@
+{
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceUSD": 0,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": false,
+        "aiGeneration": false
+      },
+      "limits": {
+        "lessonsPerMonth": 5,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 0
+      }
+    },
+    {
+      "id": "starter-plus",
+      "name": "Starter+",
+      "priceUSD": 9.99,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": true,
+        "aiGeneration": true
+      },
+      "limits": {
+        "lessonsPerMonth": 50,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 10
+      }
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceUSD": 29.99,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": true,
+        "aiGeneration": true
+      },
+      "limits": {
+        "lessonsPerMonth": -1,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 10
+      }
+    }
+  ]
+}
