@@ -20,8 +20,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -72,8 +70,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Install dependencies
         run: pnpm install
@@ -87,4 +83,4 @@ jobs:
           sleep 10
           pnpm lhci
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_GITHUB_APP_TOKEN: ${{jBUPhFippsvN:90091457:CnIwNudPfkiS}}
