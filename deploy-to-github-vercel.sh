@@ -88,7 +88,6 @@ else
   printf "  • No merge conflict markers detected.\n"
 fi
 
-=======
  main
 step 9 "User confirmation"
 read -rp "Proceed with commit using message '\$COMMIT_MSG'? [y/N] " confirm

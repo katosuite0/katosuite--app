@@ -1,5 +1,4 @@
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
@@ -28,7 +27,6 @@ export default async function LocaleLayout({
           {children}
         </TranslationProvider>
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
 

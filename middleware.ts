@@ -1,5 +1,4 @@
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
@@ -39,7 +38,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
 
