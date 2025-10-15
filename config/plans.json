@@ -1,0 +1,43 @@
+[
+  {
+    "id": "starter",
+    "name": "Starter",
+    "price": 29,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Unlimited lesson drafts",
+      "Automated accommodations",
+      "Email support"
+    ],
+    "watermark": true
+  },
+  {
+    "id": "professional",
+    "name": "Professional",
+    "price": 79,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Everything in Starter",
+      "Curriculum alignment",
+      "PDF exports without watermark",
+      "Priority support"
+    ],
+    "watermark": false
+  },
+  {
+    "id": "district",
+    "name": "District",
+    "price": 199,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Everything in Professional",
+      "District-wide analytics",
+      "Unlimited educator seats",
+      "Dedicated success manager"
+    ],
+    "watermark": false
+  }
+]

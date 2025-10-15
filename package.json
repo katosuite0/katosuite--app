@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "archive": "./scripts/create-archive.sh"
   },
   "dependencies": {
     "clsx": "^2.1.1",

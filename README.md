@@ -9,6 +9,7 @@ KatoSuite is a Next.js 14 application that helps educators design inclusive less
 - **Health endpoint** – `GET /api/health` returns `{ ok: true }` for quick uptime checks.
 - **Supabase ready** – A typed client wrapper warns when environment variables are missing.
 - **Tailwind-powered UI** – Reusable buttons, cards, and layout primitives keep the app consistent.
+- **Plan-aware pricing** – Pricing table pulls from `config/plans.json`, entitlements, and watermark policy helpers.
 - **Smoke test coverage** – Vitest exercises the sanitizer and ensures malicious markup is removed.
 - **Deployment helper** – `deploy-to-github-vercel.sh` mirrors the 11-step validation workflow before suggesting the `git push` command.
 
@@ -45,6 +46,7 @@ Visit <http://localhost:3000> to explore the English experience. Switch language
 | `pnpm lint`       | Run ESLint using the Next.js shareable config             |
 | `pnpm typecheck`  | Execute TypeScript in no-emit mode                        |
 | `pnpm test`       | Run Vitest (JS DOM environment)                           |
+| `pnpm archive`    | Package the Figma Make archive into `archive/`            |
 
 ## 🔐 Environment Variables
 
@@ -76,6 +78,8 @@ It validates tooling, summarizes repository changes, and prints the `git push co
 - [`READY_TO_DEPLOY.md`](./READY_TO_DEPLOY.md) – Preflight checklist
 - [`FINAL_DEPLOYMENT_CHECKLIST.md`](./FINAL_DEPLOYMENT_CHECKLIST.md) – Post-release validation
 - [`PRODUCTION_KEYS_DEPLOYMENT_GUIDE.md`](./PRODUCTION_KEYS_DEPLOYMENT_GUIDE.md) – Secure secrets management
+- [`FIGMA_MAKE_ARCHIVE_GUIDE.md`](./FIGMA_MAKE_ARCHIVE_GUIDE.md) – Steps to generate the Figma Make archive
+- [`PRODUCTION_READY_FINAL.md`](./PRODUCTION_READY_FINAL.md) – Final pre-launch checklist
 - [`CODEX_DEPLOYMENT_GUIDE.md`](./CODEX_DEPLOYMENT_GUIDE.md) – Validator, push, and rollback playbook
 
 ## 🛡️ Security & QA
