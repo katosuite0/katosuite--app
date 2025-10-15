@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useMemo, type ReactNode } from 'react';
+import React from 'react';
 import type { Locale, Dictionary } from '@/i18n/dictionaries';
 
 type TranslationContextValue = {
@@ -8,7 +8,7 @@ type TranslationContextValue = {
   dictionary: Dictionary;
 };
 
-const TranslationContext = createContext<TranslationContextValue | null>(null);
+const TranslationContext = React.createContext(null);
 
 export function TranslationProvider({
   locale,
@@ -17,17 +17,17 @@ export function TranslationProvider({
 }: {
   locale: Locale;
   dictionary: Dictionary;
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
-  const value = useMemo(() => ({ locale, dictionary }), [locale, dictionary]);
+  const value = React.useMemo(() => ({ locale, dictionary }), [locale, dictionary]);
 
-  return <TranslationContext.Provider value={value}>{children}</TranslationContext.Provider>;
+  return React.createElement(TranslationContext.Provider, { value }, children);
 }
 
-export function useDictionary() {
-  const context = useContext(TranslationContext);
+export function useDictionary(): TranslationContextValue {
+  const context = React.useContext(TranslationContext);
   if (!context) {
     throw new Error('useDictionary must be used within a TranslationProvider');
   }
-  return context;
+  return context as TranslationContextValue;
 }

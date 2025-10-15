@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { useTranslations } from "next-intl";
 import ExportPreview from "@/components/ExportPreview";
 
 export default function LessonsPage() {
   const t = useTranslations("Lessons");
-  const [content, setContent] = useState("<h2>Sample Lesson</h2><p>This is a sample lesson content.</p>");
-  const [planId, setPlanId] = useState("free");
+  const [content, setContent] = React.useState("<h2>Sample Lesson</h2><p>This is a sample lesson content.</p>");
+  const [planId, setPlanId] = React.useState("free");
 
   return (
     <main className="min-h-screen p-8">

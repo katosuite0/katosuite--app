@@ -1,26 +1,4 @@
- codex/add-automated-github-deployment-script-7npuct
- codex/add-automated-github-deployment-script-04e1zj
-
- codex/add-automated-github-deployment-script-rziebe
- main
- main
-# Dependencies
-node_modules/
-
-# Next.js build output
-.next/
-out/
-
-# Environment files
-.env*
-!.env.example
-
-# Logs
- codex/add-automated-github-deployment-script-7npuct
- codex/add-automated-github-deployment-script-04e1zj
-
-
-# dependencies
+ # dependencies
 node_modules
 .pnp
 .pnp.js
@@ -42,23 +20,12 @@ build
 *.pem
 
 # debug
- main
- main
- main
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
- codex/add-automated-github-deployment-script-7npuct
-
- codex/add-automated-github-deployment-script-04e1zj
-
- codex/add-automated-github-deployment-script-rziebe
- main
- main
 # OS and editor artifacts
-.DS_Store
 Thumbs.db
 *.swp
 .idea/
@@ -66,13 +33,6 @@ Thumbs.db
 
 # Supabase
 .supabase/
-
-# Coverage
-coverage/
- codex/add-automated-github-deployment-script-7npuct
-
- codex/add-automated-github-deployment-script-04e1zj
-
 
 # local env files
 .env*.local
@@ -87,6 +47,3 @@ next-env.d.ts
 
 # lighthouse
 .lighthouseci
- main
- main
- main

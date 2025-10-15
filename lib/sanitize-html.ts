@@ -1,24 +1,26 @@
-import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
 
-let purifier: ReturnType<typeof createDOMPurify> | null = null;
-
-function getPurifier() {
-  if (typeof window !== 'undefined') {
-    return createDOMPurify(window as unknown as any);
+/**
+ * Client-side HTML sanitization using DOMPurify.
+ * 
+ * Note: This function only works in browser environments.
+ * On the server side, it returns the input unchanged.
+ * Ensure all HTML content is from trusted sources or validated before use.
+ * 
+ * @param html - The HTML string to sanitize
+ * @returns Sanitized HTML safe for rendering
+ */
+export function sanitizeHtml(html: string): string {
+  if (typeof window === 'undefined') {
+    // Server-side: DOMPurify requires a DOM, so we cannot sanitize here.
+    // This function should only be called from client components.
+    console.warn('sanitizeHtml called on server - returning unsanitized content. Use only in client components.');
+    return html;
   }
 
-  if (!purifier) {
-    const { window } = new JSDOM('').window;
-    purifier = createDOMPurify(window as unknown as any);
-  }
-
-  return purifier;
-}
-
-export function sanitizeHtml(html: string) {
-  const activePurifier = getPurifier();
-  return activePurifier.sanitize(html, {
+  // Client-side: use dompurify with window
+  const purifier = createDOMPurify(window);
+  return purifier.sanitize(html, {
     ALLOWED_TAGS: [
       'a',
       'abbr',
