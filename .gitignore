@@ -1,3 +1,4 @@
+ codex/add-automated-github-deployment-script-rziebe
 # Dependencies
 node_modules/
 
@@ -10,11 +11,36 @@ out/
 !.env.example
 
 # Logs
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+.pnpm-store
+
+# testing
+coverage
+test-results
+playwright-report
+
+# next.js
+.next
+out
+dist
+build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+ main
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+ codex/add-automated-github-deployment-script-rziebe
 # OS and editor artifacts
 .DS_Store
 Thumbs.db
@@ -27,3 +53,18 @@ Thumbs.db
 
 # Coverage
 coverage/
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# lighthouse
+.lighthouseci
+ main

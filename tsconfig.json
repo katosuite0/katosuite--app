@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+ codex/add-automated-github-deployment-script-rziebe
+"target": "es2019",
     "lib": [
       "dom",
       "dom.iterable",
@@ -10,6 +11,13 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+ main
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -18,6 +26,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+ codex/add-automated-github-deployment-script-rziebe
     "types": [
       "vitest/globals"
     ],
@@ -43,4 +52,17 @@
     ".next",
     "out"
   ]
+
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+ main
 }
