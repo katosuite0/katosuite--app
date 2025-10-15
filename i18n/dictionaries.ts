@@ -13,7 +13,6 @@ export type Dictionary = {
  codex/add-automated-github-deployment-script-7npuct
     pricingHeading: string;
     pricingIntro: string;
-=======
  main
     qaChecklistHeading: string;
     qaChecklistItems: string[];
@@ -37,7 +36,6 @@ const dictionaries: Record<Locale, Dictionary> = {
  codex/add-automated-github-deployment-script-7npuct
       pricingHeading: 'Choose the right plan for your school',
       pricingIntro: 'Start with a guided rollout, then scale district-wide when your team is ready.',
-=======
  main
       qaChecklistHeading: 'Launch checklist',
       qaChecklistItems: [
@@ -66,7 +64,6 @@ const dictionaries: Record<Locale, Dictionary> = {
  codex/add-automated-github-deployment-script-7npuct
       pricingHeading: 'Choisissez l’offre adaptée à votre établissement',
       pricingIntro: 'Démarrez en douceur, puis déployez à l’échelle du district lorsque votre équipe est prête.',
-=======
  main
       qaChecklistHeading: 'Liste de vérification du lancement',
       qaChecklistItems: [

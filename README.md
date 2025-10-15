@@ -1,5 +1,4 @@
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
@@ -18,7 +17,6 @@ KatoSuite is a Next.js 14 application that helps educators design inclusive less
 - **Tailwind-powered UI** – Reusable buttons, cards, and layout primitives keep the app consistent.
  codex/add-automated-github-deployment-script-7npuct
 - **Plan-aware pricing** – Pricing table pulls from `config/plans.json`, entitlements, and watermark policy helpers.
-=======
  main
 - **Smoke test coverage** – Vitest exercises the sanitizer and ensures malicious markup is removed.
 - **Deployment helper** – `deploy-to-github-vercel.sh` mirrors the 11-step validation workflow before suggesting the `git push` command.
@@ -36,7 +34,6 @@ config/             Application-wide configuration objects
  codex/add-automated-github-deployment-script-7npuct
 tests/              Vitest suite
 types/              Ambient type declarations
-=======
  codex/add-automated-github-deployment-script-04e1zj
 tests/              Vitest suite
 types/              Ambient type declarations
@@ -68,7 +65,6 @@ Visit <http://localhost:3000> to explore the English experience. Switch language
 | `pnpm test`       | Run Vitest (JS DOM environment)                           |
  codex/add-automated-github-deployment-script-7npuct
 | `pnpm archive`    | Package the Figma Make archive into `archive/`            |
-=======
  main
 
 ## 🔐 Environment Variables
@@ -104,7 +100,6 @@ It validates tooling, summarizes repository changes, and prints the `git push co
  codex/add-automated-github-deployment-script-7npuct
 - [`FIGMA_MAKE_ARCHIVE_GUIDE.md`](./FIGMA_MAKE_ARCHIVE_GUIDE.md) – Steps to generate the Figma Make archive
 - [`PRODUCTION_READY_FINAL.md`](./PRODUCTION_READY_FINAL.md) – Final pre-launch checklist
-=======
  main
 - [`CODEX_DEPLOYMENT_GUIDE.md`](./CODEX_DEPLOYMENT_GUIDE.md) – Validator, push, and rollback playbook
 
@@ -125,7 +120,6 @@ It validates tooling, summarizes repository changes, and prints the `git push co
 
 Built by educators, for educators. 🎓
  codex/add-automated-github-deployment-script-7npuct
-=======
  codex/add-automated-github-deployment-script-04e1zj
 
 
