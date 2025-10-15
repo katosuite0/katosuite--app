@@ -1,8 +1,22 @@
-import { listPlans, formatPrice } from '@/lib/entitlements';
+import { listPlans, formatPrice, type Plan } from '@/lib/entitlements';
 import { shouldDisplayWatermark } from '@/lib/watermark-policy';
 
 export function PricingTable({ heading, intro }: { heading: string; intro: string }) {
   const plans = listPlans();
+
+  const getFeatureList = (features: Plan['features']) => {
+    const featureMap: Record<string, string> = {
+      lessonCreation: "Lesson Creation",
+      export: "Export Lessons",
+      library: "Save to Library",
+      aiGeneration: "AI Generation"
+    };
+    
+    return Object.entries(features)
+      .filter(([_, enabled]) => enabled === true)
+      .map(([key, _]) => featureMap[key])
+      .filter((name): name is string => typeof name === "string");
+  };
 
   return (
     <section className="space-y-6 rounded-3xl border border-slate-200 bg-white p-8">
@@ -13,12 +27,7 @@ export function PricingTable({ heading, intro }: { heading: string; intro: strin
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => {
           const watermark = shouldDisplayWatermark({ planId: plan.id });
-          const featuresList: string[] = [
-            plan.features.lessonCreation && "Lesson Creation",
-            plan.features.export && "Export Lessons",
-            plan.features.library && "Save to Library",
-            plan.features.aiGeneration && "AI Generation"
-          ].filter((f): f is string => typeof f === "string");
+          const featuresList = getFeatureList(plan.features);
           
           return (
             <article key={plan.id} className="flex h-full flex-col justify-between rounded-2xl bg-slate-50 p-6 shadow-sm">

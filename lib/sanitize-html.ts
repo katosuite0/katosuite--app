@@ -1,8 +1,20 @@
 import createDOMPurify from 'dompurify';
 
-export function sanitizeHtml(html: string) {
+/**
+ * Client-side HTML sanitization using DOMPurify.
+ * 
+ * Note: This function only works in browser environments.
+ * On the server side, it returns the input unchanged.
+ * Ensure all HTML content is from trusted sources or validated before use.
+ * 
+ * @param html - The HTML string to sanitize
+ * @returns Sanitized HTML safe for rendering
+ */
+export function sanitizeHtml(html: string): string {
   if (typeof window === 'undefined') {
-    // Server-side: return as-is, sanitization will happen on client
+    // Server-side: DOMPurify requires a DOM, so we cannot sanitize here.
+    // This function should only be called from client components.
+    console.warn('sanitizeHtml called on server - returning unsanitized content. Use only in client components.');
     return html;
   }
 
