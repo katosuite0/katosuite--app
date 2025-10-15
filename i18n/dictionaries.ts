@@ -10,6 +10,11 @@ export type Dictionary = {
     dashboardIntro: string;
     marketingHeading: string;
     marketingIntro: string;
+ codex/add-automated-github-deployment-script-7npuct
+    pricingHeading: string;
+    pricingIntro: string;
+=======
+ main
     qaChecklistHeading: string;
     qaChecklistItems: string[];
   };
@@ -29,6 +34,11 @@ const dictionaries: Record<Locale, Dictionary> = {
       marketingHeading: 'Why teams choose KatoSuite',
       marketingIntro:
         'Focus on students instead of paperwork with workflows that automate documentation, reporting, and parent communication.',
+ codex/add-automated-github-deployment-script-7npuct
+      pricingHeading: 'Choose the right plan for your school',
+      pricingIntro: 'Start with a guided rollout, then scale district-wide when your team is ready.',
+=======
+ main
       qaChecklistHeading: 'Launch checklist',
       qaChecklistItems: [
         'Health endpoint responds with { ok: true }',
@@ -53,6 +63,11 @@ const dictionaries: Record<Locale, Dictionary> = {
       marketingHeading: 'Pourquoi les équipes choisissent KatoSuite',
       marketingIntro:
         "Concentrez-vous sur les élèves plutôt que sur l'administratif grâce à des flux qui automatisent la documentation, le reporting et la communication avec les familles.",
+ codex/add-automated-github-deployment-script-7npuct
+      pricingHeading: 'Choisissez l’offre adaptée à votre établissement',
+      pricingIntro: 'Démarrez en douceur, puis déployez à l’échelle du district lorsque votre équipe est prête.',
+=======
+ main
       qaChecklistHeading: 'Liste de vérification du lancement',
       qaChecklistItems: [
         "Le point de terminaison de santé répond { ok: true }",

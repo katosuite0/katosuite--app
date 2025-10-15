@@ -1,4 +1,17 @@
 {
+ codex/add-automated-github-deployment-script-7npuct
+  "version": 3,
+  "framework": "nextjs",
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 256,
+      "maxDuration": 10
+    }
+  },
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "outputDirectory": ".next"
+
   "buildCommand": "pnpm build",
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
@@ -29,4 +42,5 @@
       "permanent": true
     }
   ]
-}
+ main
+

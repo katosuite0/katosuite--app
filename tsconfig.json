@@ -1,30 +1,10 @@
 {
   "compilerOptions": {
- codex/add-automated-github-deployment-script-04e1zj
-    "target": "es2019",
-
- codex/add-automated-github-deployment-script-rziebe
-"target": "es2019",
- main
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
- codex/add-automated-github-deployment-script-04e1zj
-
-
-    "target": "ES2017",
+    "target": "ES2020",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
- main
- main
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -33,49 +13,28 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
- codex/add-automated-github-deployment-script-04e1zj
-
- codex/add-automated-github-deployment-script-rziebe
- main
-    "types": [
-      "vitest/globals"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "typeRoots": [
-      "types"
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cjs",
-    "**/*.mjs"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out"
-  ]
- codex/add-automated-github-deployment-script-04e1zj
-
-
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/utils/*": ["./utils/*"],
+      "@/config/*": ["./config/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/styles/*": ["./styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
- main
- main
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
