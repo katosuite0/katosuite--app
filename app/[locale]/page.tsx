@@ -1,11 +1,18 @@
+ codex/add-automated-github-deployment-script-7npuct
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
+ main
  main
 import { Hero } from '@/components/hero';
 import { DashboardPreview } from '@/components/dashboard-preview';
 import { MarketingHighlights } from '@/components/marketing-highlights';
 import { QAChecklist } from '@/components/qa-checklist';
+ codex/add-automated-github-deployment-script-7npuct
+import { PricingTable } from '@/components/pricing-table';
+=======
+ main
 import { SiteHeader } from '@/components/site-header';
 import { getDictionary, type Locale } from '@/i18n/dictionaries';
 
@@ -30,6 +37,15 @@ export default async function LocaleHome({ params }: { params: { locale: Locale 
           heading={dictionary.common.marketingHeading}
           intro={dictionary.common.marketingIntro}
         />
+ codex/add-automated-github-deployment-script-7npuct
+        <PricingTable
+          heading={dictionary.common.pricingHeading}
+          intro={dictionary.common.pricingIntro}
+        />
+        <QAChecklist />
+      </main>
+    </div>
+=======
         <QAChecklist />
       </main>
     </div>
@@ -57,6 +73,7 @@ export default function HomePage() {
         </Link>
       </nav>
     </main>
+ main
  main
  main
   );

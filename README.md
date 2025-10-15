@@ -1,6 +1,9 @@
+ codex/add-automated-github-deployment-script-7npuct
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
+ main
  main
 # KatoSuite Web Application
 
@@ -13,6 +16,10 @@ KatoSuite is a Next.js 14 application that helps educators design inclusive less
 - **Health endpoint** – `GET /api/health` returns `{ ok: true }` for quick uptime checks.
 - **Supabase ready** – A typed client wrapper warns when environment variables are missing.
 - **Tailwind-powered UI** – Reusable buttons, cards, and layout primitives keep the app consistent.
+ codex/add-automated-github-deployment-script-7npuct
+- **Plan-aware pricing** – Pricing table pulls from `config/plans.json`, entitlements, and watermark policy helpers.
+=======
+ main
 - **Smoke test coverage** – Vitest exercises the sanitizer and ensures malicious markup is removed.
 - **Deployment helper** – `deploy-to-github-vercel.sh` mirrors the 11-step validation workflow before suggesting the `git push` command.
 
@@ -26,12 +33,17 @@ lib/                Utilities, including DOMPurify sanitization
 supabase/           Supabase client bootstrap (optional at runtime)
 public/             Static assets and locale placeholders
 config/             Application-wide configuration objects
+ codex/add-automated-github-deployment-script-7npuct
+tests/              Vitest suite
+types/              Ambient type declarations
+=======
  codex/add-automated-github-deployment-script-04e1zj
 tests/              Vitest suite
 types/              Ambient type declarations
 
 styles/             Global Tailwind styles
 tests/              Vitest suite
+ main
  main
 ```
 
@@ -54,6 +66,10 @@ Visit <http://localhost:3000> to explore the English experience. Switch language
 | `pnpm lint`       | Run ESLint using the Next.js shareable config             |
 | `pnpm typecheck`  | Execute TypeScript in no-emit mode                        |
 | `pnpm test`       | Run Vitest (JS DOM environment)                           |
+ codex/add-automated-github-deployment-script-7npuct
+| `pnpm archive`    | Package the Figma Make archive into `archive/`            |
+=======
+ main
 
 ## 🔐 Environment Variables
 
@@ -85,6 +101,11 @@ It validates tooling, summarizes repository changes, and prints the `git push co
 - [`READY_TO_DEPLOY.md`](./READY_TO_DEPLOY.md) – Preflight checklist
 - [`FINAL_DEPLOYMENT_CHECKLIST.md`](./FINAL_DEPLOYMENT_CHECKLIST.md) – Post-release validation
 - [`PRODUCTION_KEYS_DEPLOYMENT_GUIDE.md`](./PRODUCTION_KEYS_DEPLOYMENT_GUIDE.md) – Secure secrets management
+ codex/add-automated-github-deployment-script-7npuct
+- [`FIGMA_MAKE_ARCHIVE_GUIDE.md`](./FIGMA_MAKE_ARCHIVE_GUIDE.md) – Steps to generate the Figma Make archive
+- [`PRODUCTION_READY_FINAL.md`](./PRODUCTION_READY_FINAL.md) – Final pre-launch checklist
+=======
+ main
 - [`CODEX_DEPLOYMENT_GUIDE.md`](./CODEX_DEPLOYMENT_GUIDE.md) – Validator, push, and rollback playbook
 
 ## 🛡️ Security & QA
@@ -103,6 +124,8 @@ It validates tooling, summarizes repository changes, and prints the `git push co
 6. Open a pull request and describe the user impact.
 
 Built by educators, for educators. 🎓
+ codex/add-automated-github-deployment-script-7npuct
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
 
@@ -362,6 +385,7 @@ The project includes `vercel.json` for proper configuration.
 ## License
 
 Apache 2.0
+ main
  main
  main
  main

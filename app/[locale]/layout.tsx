@@ -1,6 +1,9 @@
+ codex/add-automated-github-deployment-script-7npuct
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
+ main
  main
 import type { ReactNode } from 'react';
 import type { Locale } from '@/i18n/dictionaries';
@@ -24,6 +27,8 @@ export default async function LocaleLayout({
         <TranslationProvider locale={params.locale} dictionary={dictionary}>
           {children}
         </TranslationProvider>
+ codex/add-automated-github-deployment-script-7npuct
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
 
@@ -79,6 +84,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+ main
  main
  main
       </body>

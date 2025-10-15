@@ -1,4 +1,9 @@
 {
+ codex/add-automated-github-deployment-script-7npuct
+  "name": "katosuite-app",
+  "version": "1.0.0",
+  "private": true,
+=======
  codex/add-automated-github-deployment-script-04e1zj
   "name": "katosuite-app",
   "version": "1.0.0",
@@ -16,17 +21,24 @@
   "main": "index.js",
  main
  main
+ main
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+ codex/add-automated-github-deployment-script-7npuct
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "archive": "./scripts/create-archive.sh"
+=======
  codex/add-automated-github-deployment-script-04e1zj
 
  codex/add-automated-github-deployment-script-rziebe
  main
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
+ main
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -49,6 +61,8 @@
   },
   "engines": {
     "node": ">=18.17.0"
+ codex/add-automated-github-deployment-script-7npuct
+
  codex/add-automated-github-deployment-script-04e1zj
 
 
@@ -87,6 +101,7 @@
     "postcss": "^8.5.6",
     "stripe": "^19.1.0",
     "tailwindcss": "^3.4.18"
+ main
  main
  main
   }
