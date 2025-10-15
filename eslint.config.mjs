@@ -1,23 +1,4 @@
- codex/add-automated-github-deployment-script-7npuct
- codex/add-automated-github-deployment-script-04e1zj
-
- codex/add-automated-github-deployment-script-rziebe
- main
- main
-import nextConfig from 'eslint-config-next';
-
-export default [
-  ...nextConfig,
-  {
-    rules: {
-      '@next/next/no-html-link-for-pages': 'off'
-    }
-  }
- codex/add-automated-github-deployment-script-7npuct
- codex/add-automated-github-deployment-script-04e1zj
-
-
-import { FlatCompat } from "@eslint/eslintrc";
+ import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -40,7 +21,4 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
- main
- main
- main
 ];
