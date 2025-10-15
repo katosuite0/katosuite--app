@@ -3,14 +3,21 @@ import plansData from '@/config/plans.json';
 export type Plan = {
   id: string;
   name: string;
-  price: number;
-  currency: string;
-  billingInterval: 'month' | 'year';
-  features: string[];
-  watermark: boolean;
+  priceUSD: number;
+  features: {
+    lessonCreation: boolean;
+    export: boolean;
+    library: boolean;
+    aiGeneration: boolean;
+  };
+  limits: {
+    lessonsPerMonth: number;
+    exportsPerMinute: number;
+    aiRequestsPerMinute: number;
+  };
 };
 
-const plans: Plan[] = plansData as Plan[];
+const plans: Plan[] = plansData.plans;
 const planById = new Map(plans.map((plan) => [plan.id, plan] as const));
 
 export function listPlans(): Plan[] {
@@ -21,22 +28,21 @@ export function getPlan(planId: string): Plan | undefined {
   return planById.get(planId);
 }
 
-export function planIncludes(planId: string, feature: string): boolean {
+export function planIncludes(planId: string, feature: keyof Plan['features']): boolean {
   const plan = getPlan(planId);
   if (!plan) {
     return false;
   }
 
-  return plan.features.some((item) => item.toLowerCase() === feature.toLowerCase());
+  return plan.features[feature] === true;
 }
 
 export function formatPrice(plan: Plan): string {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: plan.currency,
-    minimumFractionDigits: 0
+    currency: 'USD',
+    minimumFractionDigits: 2
   });
 
-  const amount = formatter.format(plan.price);
-  return `${amount}/${plan.billingInterval}`;
+  return formatter.format(plan.priceUSD);
 }

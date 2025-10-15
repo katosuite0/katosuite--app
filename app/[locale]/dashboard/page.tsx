@@ -3,8 +3,13 @@ import { SiteHeader } from '@/components/site-header';
 import { QAChecklist } from '@/components/qa-checklist';
 import { getDictionary, type Locale } from '@/i18n/dictionaries';
 
-export default async function DashboardPage({ params }: { params: { locale: Locale } }) {
-  const dictionary = await getDictionary(params.locale);
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'fr' }];
+}
+
+export default async function DashboardPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const dictionary = await getDictionary(locale);
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -30,10 +35,10 @@ export default async function DashboardPage({ params }: { params: { locale: Loca
         </section>
         <QAChecklist />
         <Link
-          href={`/${params.locale}`}
+          href={`/${locale}`}
           className="w-fit rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
         >
-          ← {params.locale === 'fr' ? 'Retour à l’accueil' : 'Back to home'}
+          ← {locale === 'fr' ? 'Retour à l’accueil' : 'Back to home'}
         </Link>
       </main>
     </div>

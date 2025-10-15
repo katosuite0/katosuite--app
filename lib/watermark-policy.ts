@@ -15,7 +15,8 @@ export function shouldDisplayWatermark({ planId, isTrialing = false }: Watermark
     return true;
   }
 
-  if (plan.watermark) {
+  // Free plan shows watermark, paid plans don't
+  if (plan.priceUSD === 0) {
     return true;
   }
 

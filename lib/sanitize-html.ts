@@ -1,16 +1,18 @@
 import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
 
-let purifier: ReturnType<typeof createDOMPurify> | null = null;
+type DOMPurifyI = ReturnType<typeof createDOMPurify>;
+
+let purifier: DOMPurifyI | null = null;
 
 function getPurifier() {
   if (typeof window !== 'undefined') {
-    return createDOMPurify(window as unknown as any);
+    return createDOMPurify(window);
   }
 
   if (!purifier) {
     const { window } = new JSDOM('').window;
-    purifier = createDOMPurify(window as unknown as any);
+    purifier = createDOMPurify(window as Window & typeof globalThis);
   }
 
   return purifier;

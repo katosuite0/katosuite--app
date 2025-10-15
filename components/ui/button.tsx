@@ -22,7 +22,7 @@ export function Button({ className, variant = 'primary', ...props }: ButtonProps
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60',
+        'inline-flex items-center justify-center rounded-full h-11 px-6 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60',
         variantStyles[variant],
         className
       )}

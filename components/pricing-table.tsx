@@ -13,6 +13,13 @@ export function PricingTable({ heading, intro }: { heading: string; intro: strin
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => {
           const watermark = shouldDisplayWatermark({ planId: plan.id });
+          const featureList = [
+            plan.features.lessonCreation && 'Lesson Creation',
+            plan.features.export && 'Export',
+            plan.features.library && 'Library Access',
+            plan.features.aiGeneration && 'AI Generation',
+          ].filter(Boolean) as string[];
+          
           return (
             <article key={plan.id} className="flex h-full flex-col justify-between rounded-2xl bg-slate-50 p-6 shadow-sm">
               <div className="space-y-3">
@@ -21,12 +28,23 @@ export function PricingTable({ heading, intro }: { heading: string; intro: strin
                   <span className="text-sm font-medium text-brand-600">{formatPrice(plan)}</span>
                 </div>
                 <ul className="space-y-2 text-sm text-slate-600">
-                  {plan.features.map((feature) => (
+                  {featureList.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
                       <span aria-hidden className="mt-1 inline-flex h-2 w-2 rounded-full bg-brand-500" />
                       <span>{feature}</span>
                     </li>
                   ))}
+                  {plan.limits.lessonsPerMonth === -1 ? (
+                    <li className="flex items-start gap-2">
+                      <span aria-hidden className="mt-1 inline-flex h-2 w-2 rounded-full bg-brand-500" />
+                      <span>Unlimited lessons/month</span>
+                    </li>
+                  ) : plan.limits.lessonsPerMonth > 0 ? (
+                    <li className="flex items-start gap-2">
+                      <span aria-hidden className="mt-1 inline-flex h-2 w-2 rounded-full bg-brand-500" />
+                      <span>{plan.limits.lessonsPerMonth} lessons/month</span>
+                    </li>
+                  ) : null}
                 </ul>
               </div>
               {watermark ? (
