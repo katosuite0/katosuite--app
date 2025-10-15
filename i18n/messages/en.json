@@ -1,0 +1,31 @@
+{
+  "Home": {
+    "title": "KatoSuite",
+    "pricing": "Pricing",
+    "library": "Library",
+    "lessons": "Lessons"
+  },
+  "Pricing": {
+    "title": "Choose Your Plan",
+    "perMonth": "per month",
+    "features": "Features",
+    "selectPlan": "Select Plan"
+  },
+  "Library": {
+    "title": "Your Library",
+    "noLessons": "No lessons saved yet",
+    "validLessonsOnly": "Only valid lessons are automatically saved"
+  },
+  "Lessons": {
+    "title": "Lesson Editor",
+    "contentEditor": "Content Editor",
+    "planSelection": "Plan Selection",
+    "exportPreview": "Export Preview"
+  },
+  "Export": {
+    "footer": "Exported from KatoSuite",
+    "upgradeTitle": "Upgrade to Remove Watermark",
+    "upgradeDescription": "Get Starter+ or Pro to export without overlay",
+    "viewPlans": "View Plans"
+  }
+}

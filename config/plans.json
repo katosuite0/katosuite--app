@@ -1,0 +1,98 @@
+ codex/add-automated-github-deployment-script-7npuct
+[
+  {
+    "id": "starter",
+    "name": "Starter",
+    "price": 29,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Unlimited lesson drafts",
+      "Automated accommodations",
+      "Email support"
+    ],
+    "watermark": true
+  },
+  {
+    "id": "professional",
+    "name": "Professional",
+    "price": 79,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Everything in Starter",
+      "Curriculum alignment",
+      "PDF exports without watermark",
+      "Priority support"
+    ],
+    "watermark": true
+  },
+  {
+    "id": "district",
+    "name": "District",
+    "price": 199,
+    "currency": "USD",
+    "billingInterval": "month",
+    "features": [
+      "Everything in Professional",
+      "District-wide analytics",
+      "Unlimited educator seats",
+      "Dedicated success manager"
+    ],
+    "watermark": true
+  }
+]
+
+{
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "priceUSD": 0,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": false,
+        "aiGeneration": false
+      },
+      "limits": {
+        "lessonsPerMonth": 5,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 0
+      }
+    },
+    {
+      "id": "starter-plus",
+      "name": "Starter+",
+      "priceUSD": 9.99,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": true,
+        "aiGeneration": true
+      },
+      "limits": {
+        "lessonsPerMonth": 50,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 10
+      }
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceUSD": 29.99,
+      "features": {
+        "lessonCreation": true,
+        "export": true,
+        "library": true,
+        "aiGeneration": true
+      },
+      "limits": {
+        "lessonsPerMonth": -1,
+        "exportsPerMinute": 10,
+        "aiRequestsPerMinute": 10
+      }
+    }
+  ]
+}
+ main
