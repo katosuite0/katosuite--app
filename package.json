@@ -1,14 +1,69 @@
 {
+ codex/add-automated-github-deployment-script-7npuct
+  "name": "katosuite-app",
+  "version": "1.0.0",
+  "private": true,
+ codex/add-automated-github-deployment-script-04e1zj
+  "name": "katosuite-app",
+  "version": "1.0.0",
+  "private": true,
+
+ codex/add-automated-github-deployment-script-rziebe
+  "name": "katosuite-app",
+  "version": "1.0.0",
+  "private": true,
+
   "name": "katosuite--app",
   "version": "1.0.0",
   "description": "KatoSuite - Lesson Planning Platform",
   "private": true,
   "main": "index.js",
+ main
+ main
+ main
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+ codex/add-automated-github-deployment-script-7npuct
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "archive": "./scripts/create-archive.sh"
+ codex/add-automated-github-deployment-script-04e1zj
+
+ codex/add-automated-github-deployment-script-rziebe
+ main
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+ main
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "dompurify": "^3.0.11",
+    "jsdom": "^24.0.0",
+    "next": "^14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.3.0",
+    "@supabase/supabase-js": "^2.43.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+ codex/add-automated-github-deployment-script-7npuct
+
+ codex/add-automated-github-deployment-script-04e1zj
+
+
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "lhci": "lhci autorun"
@@ -44,5 +99,8 @@
     "postcss": "^8.5.6",
     "stripe": "^19.1.0",
     "tailwindcss": "^3.4.18"
+ main
+ main
+ main
   }
 }

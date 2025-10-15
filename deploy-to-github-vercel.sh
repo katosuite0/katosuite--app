@@ -78,6 +78,17 @@ if [[ ${#missing_env[@]} -gt 0 ]]; then
   printf "  ! Missing environment variables: %s\n" "${missing_env[*]}"
 fi
 
+ codex/add-automated-github-deployment-script-7npuct
+conflict_report="$(git grep -n -e $'\x3c\x3c\x3c\x3c\x3c\x3c ' -e $'\x3d\x3d\x3d\x3d\x3d\x3d' -e $'\x3e\x3e\x3e\x3e\x3e\x3e' -- ':!node_modules' 2>/dev/null || true)"
+if [[ -n "$conflict_report" ]]; then
+  printf "  ! Merge conflict markers detected:\n%s\n" "$conflict_report"
+  printf "Resolve all conflict markers before committing.\n"
+  exit 1
+else
+  printf "  • No merge conflict markers detected.\n"
+fi
+
+ main
 step 9 "User confirmation"
 read -rp "Proceed with commit using message '\$COMMIT_MSG'? [y/N] " confirm
 if [[ ! "$confirm" =~ ^[Yy]$ ]]; then

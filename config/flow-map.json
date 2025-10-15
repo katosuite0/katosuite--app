@@ -1,0 +1,483 @@
+{
+  "flow_map_version": "1.0.0",
+  "generated_at": "2025-10-12T00:00:00Z",
+  "platform": "KatoSuite ECE Platform",
+  "flows": [
+    {
+      "flow_id": "onboarding",
+      "name": "User Onboarding Flow",
+      "entry_point": "page:/signup",
+      "roles": ["all"],
+      "nodes": [
+        {
+          "id": "node:signup_form",
+          "type": "page",
+          "component": "/components/auth/signup.tsx",
+          "data": {
+            "fields": ["email", "password", "role", "organization_name"],
+            "validation": "zod_schema"
+          },
+          "actions": ["action:create_account"],
+          "next": ["node:email_verification", "node:error_handler"]
+        },
+        {
+          "id": "node:email_verification",
+          "type": "page",
+          "component": "/components/auth/verify-email.tsx",
+          "data": {
+            "token": "url_param"
+          },
+          "actions": ["action:verify_email"],
+          "next": ["node:plan_selection", "node:error_handler"]
+        },
+        {
+          "id": "node:plan_selection",
+          "type": "page",
+          "component": "/components/marketing/pricing-page.tsx",
+          "data": {
+            "plans": ["free", "family_plus", "starter", "professional", "enterprise"],
+            "selected_plan": "free (default)"
+          },
+          "actions": ["action:select_plan", "action:skip_to_dashboard"],
+          "next": ["node:checkout", "node:dashboard"]
+        },
+        {
+          "id": "node:checkout",
+          "type": "page",
+          "component": "/components/checkout/checkout.tsx",
+          "data": {
+            "plan_sku": "string",
+            "stripe_checkout_session": "api_response"
+          },
+          "actions": ["action:create_stripe_checkout"],
+          "next": ["node:dashboard", "node:error_handler"]
+        },
+        {
+          "id": "node:dashboard",
+          "type": "page",
+          "component": "/components/comprehensive-dashboard.tsx",
+          "data": {
+            "user_role": "string",
+            "plan": "string"
+          },
+          "actions": ["action:view_analytics", "action:navigate_to_feature"],
+          "next": ["node:lesson_generator", "node:child_profiles", "node:sel_tracker"]
+        },
+        {
+          "id": "node:error_handler",
+          "type": "modal",
+          "component": "/components/ui/alert-dialog.tsx",
+          "data": {
+            "error_message": "string"
+          },
+          "actions": ["action:retry", "action:contact_support"],
+          "next": ["node:signup_form", "node:support_page"]
+        }
+      ],
+      "edges": [
+        { "from": "node:signup_form", "to": "node:email_verification", "condition": "success" },
+        { "from": "node:email_verification", "to": "node:plan_selection", "condition": "verified" },
+        { "from": "node:plan_selection", "to": "node:checkout", "condition": "paid_plan_selected" },
+        { "from": "node:plan_selection", "to": "node:dashboard", "condition": "free_plan_selected" },
+        { "from": "node:checkout", "to": "node:dashboard", "condition": "payment_success" }
+      ]
+    },
+    {
+      "flow_id": "lesson_generator",
+      "name": "AI Lesson Generation Flow",
+      "entry_point": "page:/lesson-generator",
+      "roles": ["educator", "director", "admin"],
+      "plan_gate": "starter+",
+      "nodes": [
+        {
+          "id": "node:lesson_form",
+          "type": "page",
+          "component": "/components/lesson-generator.tsx",
+          "data": {
+            "fields": ["domain", "age_band", "topic", "province", "accommodations"],
+            "family_context": "api:/make-server-3cabc13b/family-context/:childId"
+          },
+          "actions": ["action:select_outcomes", "action:generate_lesson"],
+          "next": ["node:outcome_selector", "node:lesson_preview"]
+        },
+        {
+          "id": "node:outcome_selector",
+          "type": "modal",
+          "component": "/components/lesson-generator.tsx",
+          "data": {
+            "outcomes": "api:/lib/curriculum/canon.ts",
+            "filtered_by": ["domain", "age_band"]
+          },
+          "actions": ["action:select_outcomes", "action:confirm"],
+          "next": ["node:lesson_form"]
+        },
+        {
+          "id": "node:lesson_preview",
+          "type": "page",
+          "component": "/components/hdlh-lesson-plan.tsx",
+          "data": {
+            "lesson": "api_response",
+            "validation_status": "api:/lib/curriculum/validate.ts"
+          },
+          "actions": ["action:edit", "action:save", "action:export_pdf", "action:discard"],
+          "next": ["node:lesson_form", "node:lesson_library", "node:pdf_export", "node:lesson_form"]
+        },
+        {
+          "id": "node:lesson_library",
+          "type": "page",
+          "component": "/components/lesson-library.tsx",
+          "data": {
+            "lessons": "api:/make-server-3cabc13b/lessons",
+            "filters": ["domain", "age_band", "date", "approved"]
+          },
+          "actions": ["action:view_lesson", "action:edit_lesson", "action:delete_lesson"],
+          "next": ["node:lesson_preview", "node:lesson_form"]
+        },
+        {
+          "id": "node:pdf_export",
+          "type": "action",
+          "component": "/lib/pdf-export.ts",
+          "data": {
+            "lesson": "object",
+            "province": "string",
+            "language": "string",
+            "watermark_visible": "boolean"
+          },
+          "actions": ["action:export_curriculum_pdf"],
+          "next": ["node:lesson_preview"]
+        }
+      ],
+      "edges": [
+        { "from": "node:lesson_form", "to": "node:outcome_selector", "condition": "select_outcomes_clicked" },
+        { "from": "node:lesson_form", "to": "node:lesson_preview", "condition": "generate_clicked" },
+        { "from": "node:lesson_preview", "to": "node:pdf_export", "condition": "export_clicked" },
+        { "from": "node:lesson_preview", "to": "node:lesson_library", "condition": "save_clicked" }
+      ]
+    },
+    {
+      "flow_id": "child_profiles",
+      "name": "Child Profile & Tracking Flow",
+      "entry_point": "page:/children",
+      "roles": ["educator", "director", "admin", "parent"],
+      "plan_gate": "free+",
+      "nodes": [
+        {
+          "id": "node:child_list",
+          "type": "page",
+          "component": "/components/child-tracking/child-profile.tsx",
+          "data": {
+            "children": "api:/make-server-3cabc13b/children",
+            "filters": ["status", "age", "room"]
+          },
+          "actions": ["action:create_child", "action:view_child", "action:search"],
+          "next": ["node:child_form", "node:child_dashboard"]
+        },
+        {
+          "id": "node:child_form",
+          "type": "modal",
+          "component": "/components/child-tracking/child-profile.tsx",
+          "data": {
+            "fields": ["first_name", "last_name", "dob", "allergies", "emergency_contacts"],
+            "validation": "zod_schema"
+          },
+          "actions": ["action:save_child", "action:cancel"],
+          "next": ["node:child_dashboard", "node:child_list"]
+        },
+        {
+          "id": "node:child_dashboard",
+          "type": "page",
+          "component": "/components/child-tracking/child-dashboard.tsx",
+          "data": {
+            "child": "api:/make-server-3cabc13b/children/:id",
+            "attendance": "api:/make-server-3cabc13b/attendance/:childId",
+            "observations": "api:/make-server-3cabc13b/observations?childId=:id",
+            "family_context": "api:/make-server-3cabc13b/family-context/:childId"
+          },
+          "actions": ["action:log_attendance", "action:add_observation", "action:edit_family_context"],
+          "next": ["node:attendance_tracker", "node:observation_form", "node:family_context_form"]
+        },
+        {
+          "id": "node:attendance_tracker",
+          "type": "page",
+          "component": "/components/child-tracking/attendance-tracker.tsx",
+          "data": {
+            "attendance": "api:/make-server-3cabc13b/attendance",
+            "date": "today"
+          },
+          "actions": ["action:check_in", "action:check_out", "action:mark_absent"],
+          "next": ["node:child_dashboard"]
+        },
+        {
+          "id": "node:observation_form",
+          "type": "modal",
+          "component": "/components/sel-tracker.tsx",
+          "data": {
+            "fields": ["domain", "outcome_id", "observable", "evidence_type", "context"],
+            "outcomes": "api:/lib/curriculum/canon.ts"
+          },
+          "actions": ["action:save_observation", "action:submit_for_approval"],
+          "next": ["node:child_dashboard", "node:approval_queue"]
+        },
+        {
+          "id": "node:family_context_form",
+          "type": "modal",
+          "component": "/components/child-tracking/child-profile.tsx",
+          "data": {
+            "fields": ["goals", "accommodations", "cultural_notes", "languages", "province"],
+            "options": "api:/database/family_context.sql (reference tables)"
+          },
+          "actions": ["action:save_family_context"],
+          "next": ["node:child_dashboard"]
+        }
+      ],
+      "edges": [
+        { "from": "node:child_list", "to": "node:child_form", "condition": "create_clicked" },
+        { "from": "node:child_list", "to": "node:child_dashboard", "condition": "child_selected" },
+        { "from": "node:child_dashboard", "to": "node:attendance_tracker", "condition": "log_attendance_clicked" },
+        { "from": "node:child_dashboard", "to": "node:observation_form", "condition": "add_observation_clicked" }
+      ]
+    },
+    {
+      "flow_id": "sel_tracker",
+      "name": "Social-Emotional Learning Tracker Flow",
+      "entry_point": "page:/sel-tracker",
+      "roles": ["educator", "director", "admin"],
+      "plan_gate": "starter+",
+      "nodes": [
+        {
+          "id": "node:sel_dashboard",
+          "type": "page",
+          "component": "/components/sel-tracker.tsx",
+          "data": {
+            "observations": "api:/make-server-3cabc13b/observations",
+            "filters": ["domain", "child", "date", "approval_status"]
+          },
+          "actions": ["action:add_observation", "action:view_analytics"],
+          "next": ["node:observation_form", "node:sel_analytics"]
+        },
+        {
+          "id": "node:sel_analytics",
+          "type": "page",
+          "component": "/components/enhanced-child-development-analytics.tsx",
+          "data": {
+            "analytics": "api:/make-server-3cabc13b/observations/analytics",
+            "child_id": "string"
+          },
+          "actions": ["action:export_report", "action:filter_by_domain"],
+          "next": ["node:pdf_export"]
+        }
+      ]
+    },
+    {
+      "flow_id": "pdf_export",
+      "name": "PDF Export Flow",
+      "entry_point": "action:export_pdf",
+      "roles": ["educator", "director", "admin"],
+      "plan_gate": "starter+",
+      "nodes": [
+        {
+          "id": "node:export_options",
+          "type": "modal",
+          "component": "/components/core/pdf-export-system.tsx",
+          "data": {
+            "export_type": ["lesson", "observation", "report"],
+            "language": ["en", "fr"],
+            "watermark_visible": "boolean (plan-based)"
+          },
+          "actions": ["action:generate_pdf"],
+          "next": ["node:download_pdf"]
+        },
+        {
+          "id": "node:download_pdf",
+          "type": "action",
+          "component": "/lib/pdf-export.ts",
+          "data": {
+            "pdf_bytes": "Uint8Array",
+            "filename": "string"
+          },
+          "actions": ["action:download_pdf"],
+          "next": ["node:success_toast"]
+        }
+      ]
+    },
+    {
+      "flow_id": "billing",
+      "name": "Billing & Add-Ons Flow",
+      "entry_point": "page:/settings (billing section)",
+      "roles": ["admin", "director"],
+      "plan_gate": "all",
+      "nodes": [
+        {
+          "id": "node:billing_dashboard",
+          "type": "page",
+          "component": "/components/settings.tsx",
+          "data": {
+            "current_plan": "string",
+            "usage": "api:/make-server-3cabc13b/billing/usage",
+            "invoices": "api:/make-server-3cabc13b/billing/invoices",
+            "add_ons": "api:/make-server-3cabc13b/billing/add-ons"
+          },
+          "actions": ["action:upgrade_plan", "action:purchase_addon", "action:view_invoice"],
+          "next": ["node:plan_selector", "node:addon_checkout", "node:invoice_detail"]
+        },
+        {
+          "id": "node:plan_selector",
+          "type": "modal",
+          "component": "/components/marketing/pricing-page.tsx",
+          "data": {
+            "plans": "array",
+            "current_plan": "string"
+          },
+          "actions": ["action:select_plan", "action:create_checkout"],
+          "next": ["node:stripe_checkout"]
+        },
+        {
+          "id": "node:addon_checkout",
+          "type": "modal",
+          "component": "/components/checkout/checkout.tsx",
+          "data": {
+            "addon_sku": "string",
+            "price": "number"
+          },
+          "actions": ["action:purchase_addon"],
+          "next": ["node:stripe_checkout"]
+        },
+        {
+          "id": "node:stripe_checkout",
+          "type": "external",
+          "component": "Stripe Checkout",
+          "data": {
+            "session_id": "string"
+          },
+          "actions": ["action:complete_payment"],
+          "next": ["node:billing_dashboard", "node:error_handler"]
+        }
+      ]
+    },
+    {
+      "flow_id": "parent_hub",
+      "name": "Parent Portal (Read-Only) Flow",
+      "entry_point": "page:/parent-dashboard",
+      "roles": ["parent"],
+      "plan_gate": "all",
+      "nodes": [
+        {
+          "id": "node:parent_dashboard",
+          "type": "page",
+          "component": "/components/child-tracking/child-dashboard.tsx",
+          "data": {
+            "children": "api:/make-server-3cabc13b/children (own children only)",
+            "attendance": "api:/make-server-3cabc13b/attendance/:childId",
+            "observations": "api:/make-server-3cabc13b/observations?childId=:id (approved only)",
+            "lessons": "api:/make-server-3cabc13b/lessons (family notes only)"
+          },
+          "actions": ["action:view_child", "action:read_digest", "action:view_progress"],
+          "next": ["node:child_detail", "node:digest_view"]
+        },
+        {
+          "id": "node:child_detail",
+          "type": "page",
+          "component": "/components/child-tracking/child-dashboard.tsx",
+          "data": {
+            "child": "object",
+            "privacy_mode": "boolean"
+          },
+          "actions": ["action:view_attendance", "action:view_observations"],
+          "next": ["node:parent_dashboard"]
+        },
+        {
+          "id": "node:digest_view",
+          "type": "page",
+          "component": "/components/settings.tsx",
+          "data": {
+            "digests": "api:/make-server-3cabc13b/emails/parent-digest/history",
+            "language": "string"
+          },
+          "actions": ["action:read_digest", "action:unsubscribe"],
+          "next": ["node:parent_dashboard"]
+        }
+      ]
+    },
+    {
+      "flow_id": "admin",
+      "name": "Admin & Support Flow",
+      "entry_point": "page:/admin",
+      "roles": ["admin", "support"],
+      "plan_gate": "all",
+      "nodes": [
+        {
+          "id": "node:admin_dashboard",
+          "type": "page",
+          "component": "/components/admin/analytics-dashboard.tsx",
+          "data": {
+            "organizations": "api:/make-server-3cabc13b/admin/organizations",
+            "users": "api:/make-server-3cabc13b/admin/users",
+            "analytics": "api:/make-server-3cabc13b/admin/analytics"
+          },
+          "actions": ["action:view_org", "action:impersonate_user", "action:set_watermark_flag"],
+          "next": ["node:org_management", "node:user_impersonation", "node:watermark_control"]
+        },
+        {
+          "id": "node:org_management",
+          "type": "page",
+          "component": "/components/admin/organization-management.tsx",
+          "data": {
+            "organization": "api:/make-server-3cabc13b/admin/organizations/:id",
+            "users": "array",
+            "usage": "object"
+          },
+          "actions": ["action:edit_limits", "action:set_plan", "action:view_audit_logs"],
+          "next": ["node:audit_logs"]
+        },
+        {
+          "id": "node:watermark_control",
+          "type": "modal",
+          "component": "/components/admin/organization-management.tsx",
+          "data": {
+            "organization_id": "string",
+            "enterprise_can_hide_watermark": "boolean"
+          },
+          "actions": ["action:toggle_watermark_flag"],
+          "next": ["node:org_management"]
+        },
+        {
+          "id": "node:audit_logs",
+          "type": "page",
+          "component": "/components/admin/analytics-dashboard.tsx",
+          "data": {
+            "logs": "api:/make-server-3cabc13b/admin/audit-logs",
+            "filters": ["user", "action", "date", "resource"]
+          },
+          "actions": ["action:export_logs", "action:filter"],
+          "next": ["node:admin_dashboard"]
+        }
+      ]
+    }
+  ],
+  "global_actions": {
+    "action:create_account": {
+      "api": "POST /make-server-3cabc13b/auth/signup",
+      "params": ["email", "password", "role", "organization_name"],
+      "response": { "user_id": "string", "session_token": "string" },
+      "errors": ["email_exists", "weak_password", "invalid_role"]
+    },
+    "action:generate_lesson": {
+      "api": "POST /make-server-3cabc13b/lessons/generate",
+      "params": ["topic", "age_band", "outcome_ids", "province", "child_context"],
+      "response": { "lesson": "object", "validation": "object" },
+      "errors": ["plan_limit_reached", "ai_generation_failed", "invalid_outcomes"]
+    },
+    "action:export_curriculum_pdf": {
+      "api": "client-side /lib/pdf-export.ts",
+      "params": ["lesson", "province", "language", "watermark_visible"],
+      "response": { "pdf_bytes": "Uint8Array", "filename": "string" },
+      "errors": ["pdf_generation_failed"]
+    },
+    "action:save_observation": {
+      "api": "POST /make-server-3cabc13b/observations",
+      "params": ["child_id", "domain", "outcome_id", "observable", "evidence_type", "context"],
+      "response": { "observation_id": "string" },
+      "errors": ["plan_limit_reached", "invalid_child_id", "invalid_outcome_id"]
+    }
+  }
+}

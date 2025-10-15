@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ codex/add-automated-github-deployment-script-7npuct
+ codex/add-automated-github-deployment-script-04e1zj
+
+ codex/add-automated-github-deployment-script-rziebe
+ main
+ main
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+a {
+  @apply text-brand-600 hover:text-brand-700 underline;
+}
+ codex/add-automated-github-deployment-script-7npuct
+ codex/add-automated-github-deployment-script-04e1zj
+
+
+ main
+ main
+ main
