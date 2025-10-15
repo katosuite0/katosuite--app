@@ -1,4 +1,7 @@
+ codex/add-automated-github-deployment-script-04e1zj
+
  codex/add-automated-github-deployment-script-rziebe
+ main
 # KatoSuite Web Application
 
 KatoSuite is a Next.js 14 application that helps educators design inclusive lesson plans, automate compliance, and prepare release-ready deployments. The repository includes a localized marketing experience, a dashboard preview, sanitized rich text rendering with DOMPurify, and a scripted deployment helper that automates the historical 11-step validator.
@@ -23,8 +26,13 @@ lib/                Utilities, including DOMPurify sanitization
 supabase/           Supabase client bootstrap (optional at runtime)
 public/             Static assets and locale placeholders
 config/             Application-wide configuration objects
+ codex/add-automated-github-deployment-script-04e1zj
+tests/              Vitest suite
+types/              Ambient type declarations
+
 styles/             Global Tailwind styles
 tests/              Vitest suite
+ main
 ```
 
 ## 🚀 Getting Started
@@ -95,7 +103,9 @@ It validates tooling, summarizes repository changes, and prints the `git push co
 6. Open a pull request and describe the user impact.
 
 Built by educators, for educators. 🎓
-=======
+ codex/add-automated-github-deployment-script-04e1zj
+
+
  codex/add-automated-github-deployment-script
 # 🚀 Deploy KatoSuite in Minutes
 
@@ -352,5 +362,6 @@ The project includes `vercel.json` for proper configuration.
 ## License
 
 Apache 2.0
+ main
  main
  main

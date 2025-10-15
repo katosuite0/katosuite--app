@@ -1,4 +1,7 @@
+ codex/add-automated-github-deployment-script-04e1zj
+
  codex/add-automated-github-deployment-script-rziebe
+ main
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -32,6 +35,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+ codex/add-automated-github-deployment-script-04e1zj
+
 
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
@@ -45,5 +50,6 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+ main
  main
 };

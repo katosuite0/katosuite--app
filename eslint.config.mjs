@@ -1,4 +1,7 @@
+ codex/add-automated-github-deployment-script-04e1zj
+
  codex/add-automated-github-deployment-script-rziebe
+ main
 import nextConfig from 'eslint-config-next';
 
 export default [
@@ -8,6 +11,8 @@ export default [
       '@next/next/no-html-link-for-pages': 'off'
     }
   }
+ codex/add-automated-github-deployment-script-04e1zj
+
 
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
@@ -32,5 +37,6 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
+ main
  main
 ];

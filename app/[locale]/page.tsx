@@ -1,4 +1,7 @@
+ codex/add-automated-github-deployment-script-04e1zj
+
  codex/add-automated-github-deployment-script-rziebe
+ main
 import { Hero } from '@/components/hero';
 import { DashboardPreview } from '@/components/dashboard-preview';
 import { MarketingHighlights } from '@/components/marketing-highlights';
@@ -30,6 +33,8 @@ export default async function LocaleHome({ params }: { params: { locale: Locale 
         <QAChecklist />
       </main>
     </div>
+ codex/add-automated-github-deployment-script-04e1zj
+
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -52,6 +57,7 @@ export default function HomePage() {
         </Link>
       </nav>
     </main>
+ main
  main
   );
 }
