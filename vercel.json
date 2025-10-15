@@ -1,5 +1,4 @@
 {
- codex/add-automated-github-deployment-script-7npuct
   "version": 3,
   "framework": "nextjs",
   "functions": {
@@ -10,12 +9,8 @@
   },
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
-  "outputDirectory": ".next"
-
-  "buildCommand": "pnpm build",
   "devCommand": "pnpm dev",
-  "installCommand": "pnpm install",
-  "framework": "nextjs",
+  "outputDirectory": ".next",
   "headers": [
     {
       "source": "/api/(.*)",
@@ -42,5 +37,4 @@
       "permanent": true
     }
   ]
- main
-
+}
