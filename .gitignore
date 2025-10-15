@@ -1,3 +1,17 @@
+ codex/add-automated-github-deployment-script-rziebe
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+
 # dependencies
 node_modules
 .pnp
@@ -20,10 +34,25 @@ build
 *.pem
 
 # debug
+ main
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+ codex/add-automated-github-deployment-script-rziebe
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Supabase
+.supabase/
+
+# Coverage
+coverage/
 
 # local env files
 .env*.local
@@ -38,3 +67,4 @@ next-env.d.ts
 
 # lighthouse
 .lighthouseci
+ main

@@ -1,3 +1,14 @@
+ codex/add-automated-github-deployment-script-rziebe
+import nextConfig from 'eslint-config-next';
+
+export default [
+  ...nextConfig,
+  {
+    rules: {
+      '@next/next/no-html-link-for-pages': 'off'
+    }
+  }
+
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import path from "path";
@@ -21,4 +32,5 @@ export default [
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
   },
+ main
 ];
