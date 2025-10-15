@@ -1,24 +1,14 @@
-import { JSDOM } from 'jsdom';
 import createDOMPurify from 'dompurify';
 
-let purifier: ReturnType<typeof createDOMPurify> | null = null;
-
-function getPurifier() {
-  if (typeof window !== 'undefined') {
-    return createDOMPurify(window as unknown as any);
-  }
-
-  if (!purifier) {
-    const { window } = new JSDOM('').window;
-    purifier = createDOMPurify(window as unknown as any);
-  }
-
-  return purifier;
-}
-
 export function sanitizeHtml(html: string) {
-  const activePurifier = getPurifier();
-  return activePurifier.sanitize(html, {
+  if (typeof window === 'undefined') {
+    // Server-side: return as-is, sanitization will happen on client
+    return html;
+  }
+
+  // Client-side: use dompurify with window
+  const purifier = createDOMPurify(window);
+  return purifier.sanitize(html, {
     ALLOWED_TAGS: [
       'a',
       'abbr',

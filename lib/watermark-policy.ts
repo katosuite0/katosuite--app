@@ -15,7 +15,8 @@ export function shouldDisplayWatermark({ planId, isTrialing = false }: Watermark
     return true;
   }
 
-  if (plan.watermark) {
+  // Free plan has watermark
+  if (plan.id === 'free') {
     return true;
   }
 

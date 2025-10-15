@@ -56,11 +56,11 @@ const dictionaries: Record<Locale, Dictionary> = {
       qaChecklistHeading: 'Liste de vérification du lancement',
       qaChecklistItems: [
         "Le point de terminaison de santé répond { ok: true }",
-        'La connexion GitHub renvoie vers le tableau de bord',
-        'Stripe déclenche la mise à jour des droits dans Supabase',
-        'L'export PDF renvoie une URL signée',
-        'Le sélecteur de langue persiste entre les pages',
-        'Performance Lighthouse ≥ 90 sur mobile'
+        "La connexion GitHub renvoie vers le tableau de bord",
+        "Stripe déclenche la mise à jour des droits dans Supabase",
+        "L'export PDF renvoie une URL signée",
+        "Le sélecteur de langue persiste entre les pages",
+        "Performance Lighthouse ≥ 90 sur mobile"
       ]
     }
   }

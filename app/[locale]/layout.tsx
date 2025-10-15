@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { redirect } from "next/navigation";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -17,7 +17,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   
   if (!["en", "fr"].includes(locale)) {
-    notFound();
+    redirect("/en");
   }
 
   const messages = await getMessages();

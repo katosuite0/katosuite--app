@@ -17,7 +17,7 @@ export function QAChecklist() {
         <span className="rounded-full bg-brand-100 px-3 py-1 text-xs font-medium text-brand-700">{locale.toUpperCase()}</span>
       </div>
       <ul className="space-y-3 text-sm text-slate-700">
-        {qaChecklistItems.map((item) => (
+        {qaChecklistItems.map((item: string) => (
           <li key={item} className="flex items-start gap-2">
             <span aria-hidden className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-500" />
             <span>{item}</span>
