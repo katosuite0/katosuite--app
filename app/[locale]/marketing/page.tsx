@@ -4,8 +4,13 @@ import { MarketingHighlights } from '@/components/marketing-highlights';
 import { Hero } from '@/components/hero';
 import { getDictionary, type Locale } from '@/i18n/dictionaries';
 
-export default async function MarketingPage({ params }: { params: { locale: Locale } }) {
-  const dictionary = await getDictionary(params.locale);
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'fr' }];
+}
+
+export default async function MarketingPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const dictionary = await getDictionary(locale);
 
   return (
     <div className="min-h-screen bg-slate-100">
@@ -22,10 +27,10 @@ export default async function MarketingPage({ params }: { params: { locale: Loca
           intro={dictionary.common.marketingIntro}
         />
         <Link
-          href={`/${params.locale}/dashboard`}
+          href={`/${locale}/dashboard`}
           className="w-fit rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
         >
-          {params.locale === 'fr' ? 'Voir le tableau de bord' : 'View dashboard'}
+          {locale === 'fr' ? 'Voir le tableau de bord' : 'View dashboard'}
         </Link>
       </main>
     </div>

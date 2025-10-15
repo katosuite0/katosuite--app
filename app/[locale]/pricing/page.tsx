@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import plans from "@/config/plans.json";
 
