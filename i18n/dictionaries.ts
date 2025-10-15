@@ -10,14 +10,12 @@ export type Dictionary = {
     dashboardIntro: string;
     marketingHeading: string;
     marketingIntro: string;
+ codex/add-automated-github-deployment-script-7npuct
     pricingHeading: string;
     pricingIntro: string;
-    pricingBetaTitle: string;
-    pricingBetaBody: string;
+ main
     qaChecklistHeading: string;
     qaChecklistItems: string[];
-    marketingHighlights: { title: string; body: string }[];
-    dashboardMetrics: { label: string; value: string }[];
   };
 };
 
@@ -35,10 +33,10 @@ const dictionaries: Record<Locale, Dictionary> = {
       marketingHeading: 'Why teams choose KatoSuite',
       marketingIntro:
         'Focus on students instead of paperwork with workflows that automate documentation, reporting, and parent communication.',
+ codex/add-automated-github-deployment-script-7npuct
       pricingHeading: 'Choose the right plan for your school',
       pricingIntro: 'Start with a guided rollout, then scale district-wide when your team is ready.',
-      pricingBetaTitle: 'New tools & updates in beta testing',
-      pricingBetaBody: 'Free to try regardless of your plan—while supplies last. Features may change before general availability.',
+ main
       qaChecklistHeading: 'Launch checklist',
       qaChecklistItems: [
         'Health endpoint responds with { ok: true }',
@@ -47,34 +45,6 @@ const dictionaries: Record<Locale, Dictionary> = {
         'PDF export returns a signed URL',
         'Localization toggle persists between routes',
         'Lighthouse performance ≥ 90 on mobile'
-      ],
-      marketingHighlights: [
-        {
-          title: 'AI lesson planning',
-          body: 'Draft accommodations, objectives, and assessments that stay aligned to your district standards.'
-        },
-        {
-          title: 'Automated compliance',
-          body: 'Generate documentation with one click, including parent letters, meeting notes, and progress updates.'
-        },
-        {
-          title: 'Collaboration tools',
-          body: 'Share plans with co-teachers, counselors, and specialists across schools with granular permissions.'
-        }
-      ],
-      dashboardMetrics: [
-        {
-          label: 'Educators collaborating this week',
-          value: '{{educator_count}}'
-        },
-        {
-          label: 'Lessons generated with AI guidance',
-          value: '{{lesson_count}}'
-        },
-        {
-          label: 'Family updates delivered',
-          value: '{{family_update_count}}'
-        }
       ]
     }
   },
@@ -91,10 +61,10 @@ const dictionaries: Record<Locale, Dictionary> = {
       marketingHeading: 'Pourquoi les équipes choisissent KatoSuite',
       marketingIntro:
         "Concentrez-vous sur les élèves plutôt que sur l'administratif grâce à des flux qui automatisent la documentation, le reporting et la communication avec les familles.",
+ codex/add-automated-github-deployment-script-7npuct
       pricingHeading: 'Choisissez l’offre adaptée à votre établissement',
       pricingIntro: 'Démarrez en douceur, puis déployez à l’échelle du district lorsque votre équipe est prête.',
-      pricingBetaTitle: 'Nouveaux outils et mises à jour en bêta',
-      pricingBetaBody: 'Essayez-les gratuitement quel que soit votre plan – disponibilité limitée. Les fonctionnalités peuvent évoluer avant le lancement officiel.',
+ main
       qaChecklistHeading: 'Liste de vérification du lancement',
       qaChecklistItems: [
         "Le point de terminaison de santé répond { ok: true }",
@@ -103,34 +73,6 @@ const dictionaries: Record<Locale, Dictionary> = {
         'L’export PDF renvoie une URL signée',
         'Le sélecteur de langue persiste entre les pages',
         'Performance Lighthouse ≥ 90 sur mobile'
-      ],
-      marketingHighlights: [
-        {
-          title: 'Planification de leçons avec IA',
-          body: 'Générez des adaptations, des objectifs et des évaluations alignés sur les cadres provinciaux en quelques clics.'
-        },
-        {
-          title: 'Conformité automatisée',
-          body: 'Créez la documentation nécessaire – lettres aux familles, comptes rendus de réunion, mises à jour de progrès – en un clic.'
-        },
-        {
-          title: 'Collaboration simplifiée',
-          body: 'Partagez les plans avec les coenseignants, spécialistes et directions avec des autorisations fines.'
-        }
-      ],
-      dashboardMetrics: [
-        {
-          label: 'Éducateurs actifs cette semaine',
-          value: '{{educator_count}}'
-        },
-        {
-          label: 'Leçons générées avec l’IA',
-          value: '{{lesson_count}}'
-        },
-        {
-          label: 'Mises à jour envoyées aux familles',
-          value: '{{family_update_count}}'
-        }
       ]
     }
   }

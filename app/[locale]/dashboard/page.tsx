@@ -16,7 +16,11 @@ export default async function DashboardPage({ params }: { params: { locale: Loca
             <p className="text-slate-600">{dictionary.common.dashboardIntro}</p>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {dictionary.common.dashboardMetrics.map((item) => (
+            {[
+              { label: 'Active lesson plans', value: '148' },
+              { label: 'Upcoming IEP meetings', value: '12' },
+              { label: 'Family notifications queued', value: '36' }
+            ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-sm text-slate-500">{item.label}</p>
                 <p className="mt-2 text-2xl font-semibold text-slate-900">{item.value}</p>

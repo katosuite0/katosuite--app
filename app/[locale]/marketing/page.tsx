@@ -20,7 +20,6 @@ export default async function MarketingPage({ params }: { params: { locale: Loca
         <MarketingHighlights
           heading={dictionary.common.marketingHeading}
           intro={dictionary.common.marketingIntro}
-          items={dictionary.common.marketingHighlights}
         />
         <Link
           href={`/${params.locale}/dashboard`}

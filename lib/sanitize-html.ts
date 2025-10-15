@@ -1,23 +1,24 @@
 import { JSDOM } from 'jsdom';
-import createDOMPurify, { type DOMPurifyI } from 'dompurify';
+import createDOMPurify from 'dompurify';
 
-let serverPurifier: DOMPurifyI | null = null;
+let purifier: ReturnType<typeof createDOMPurify> | null = null;
 
-function getPurifier(): DOMPurifyI {
+function getPurifier() {
   if (typeof window !== 'undefined') {
-    return createDOMPurify(window);
+    return createDOMPurify(window as unknown as any);
   }
 
-  if (!serverPurifier) {
-    const { window } = new JSDOM('');
-    serverPurifier = createDOMPurify(window as unknown as Window);
+  if (!purifier) {
+    const { window } = new JSDOM('').window;
+    purifier = createDOMPurify(window as unknown as any);
   }
 
-  return serverPurifier;
+  return purifier;
 }
 
-export function sanitizeHtml(html: string): string {
-  return getPurifier().sanitize(html, {
+export function sanitizeHtml(html: string) {
+  const activePurifier = getPurifier();
+  return activePurifier.sanitize(html, {
     ALLOWED_TAGS: [
       'a',
       'abbr',

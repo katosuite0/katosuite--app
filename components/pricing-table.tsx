@@ -1,17 +1,7 @@
 import { listPlans, formatPrice } from '@/lib/entitlements';
 import { shouldDisplayWatermark } from '@/lib/watermark-policy';
 
-export function PricingTable({
-  heading,
-  intro,
-  betaTitle,
-  betaBody
-}: {
-  heading: string;
-  intro: string;
-  betaTitle: string;
-  betaBody: string;
-}) {
+export function PricingTable({ heading, intro }: { heading: string; intro: string }) {
   const plans = listPlans();
 
   return (
@@ -49,13 +39,6 @@ export function PricingTable({
             </article>
           );
         })}
-      </div>
-      <div className="rounded-2xl border border-dashed border-brand-200 bg-brand-50 p-5">
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-brand-100 px-2 py-1 text-xs font-semibold text-brand-700">BETA</span>
-          <p className="text-sm font-semibold text-brand-800">{betaTitle}</p>
-        </div>
-        <p className="mt-2 text-xs text-brand-700">{betaBody}</p>
       </div>
     </section>
   );
